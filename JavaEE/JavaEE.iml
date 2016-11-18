@@ -27,5 +27,14 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="client-combined-3.0.0-beta2-nodeps" level="project" />
     <orderEntry type="library" name="jsch-0.1.54" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../jsch-0.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
