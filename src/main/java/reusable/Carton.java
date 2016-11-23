@@ -1,7 +1,5 @@
 package reusable;
 
-import initial.Cup;
-
 /**
  * Created by SF on 2016/4/13.
  */
