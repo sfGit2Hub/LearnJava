@@ -1,5 +1,7 @@
 package collections;
 
+import type.Cat;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,16 @@ public class MapImmutabel {
     private int sex;
 
     private Map<String, String> aliasName;
+
+    private Cat pet;
+
+    public Cat getPet() {
+        return pet;
+    }
+
+    public void setPet(Cat pet) {
+        this.pet = pet;
+    }
 
     public Map<String, String> getAliasName() {
         return aliasName;
