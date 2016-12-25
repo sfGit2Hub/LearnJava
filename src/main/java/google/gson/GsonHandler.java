@@ -1,8 +1,8 @@
 package google.gson;
 
-import collections.MapImmutabel;
+import study.collections.MapImmutabel;
 import com.google.gson.Gson;
-import type.Cat;
+import study.type.Cat;
 
 import java.util.HashMap;
 import java.util.Map;

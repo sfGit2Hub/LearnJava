@@ -1,4 +1,4 @@
-import operator.Fibonacci;
+import study.operator.Fibonacci;
 
 /**
  * Created by SF on 2016/3/25.

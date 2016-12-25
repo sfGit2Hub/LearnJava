@@ -11,7 +11,7 @@ Java:
     * Java: Introducing NoSuchSessionException in the core API
     * Fixing memory leak in TemporaryFileSystem Fixes #1679
     * Fixing rectangle dimension, and adding equals and hashCode
-    * Java: Adding a new W3C-compatible string error code
+    * Java: Adding a new W3C-compatible study.string error code
     * Add support to listen "refresh" events. Fixes #1584
     * extended ExpectedConditions with a list of new ones. New logic operators + conditions for css and html attributes
     * Java: Deleting webbit a test server
@@ -65,7 +65,7 @@ v2.50.1
     * add a way to add to the list of capabilities to consider to the default capability matcher
     * Grid: Fixing timeout issue again... Why isn't it covered by tests? A rhetorical question...
     * Java: Improving handling of marionette errors
-    * Java: Replacing ByteArrayOutputStream with CircularOutputStream to prevent OOM exception. Fixes issue #427
+    * Java: Replacing ByteArrayOutputStream with CircularOutputStream to prevent OOM study.exception. Fixes issue #427
     * Java: Moving CircularOutputStream to another package (it's an internal class so no need to create a copy)
     * fix #1562
 
@@ -116,10 +116,10 @@ WebDriver:
     * Refactor concrete WebDriverException#getSupportUrl's
     * Fix a NullPointerException in RemoteWebDriver.getCurrentUrl
     * Reduces time wasted in when using a native driver
-    * add the useful information about the session / capabilities in the exception when the 'browser may have died'
+    * add the useful information about the session / capabilities in the study.exception when the 'browser may have died'
     * give the cleaner almost double the time to clean up the sessions (a whopping 9 more ms). Hopefull will deflake this test in CI.
     * Adding El Capitan (OS X 10.11) to Platform
-    * Updating IE driver to fix clearing of <input type='number'> fields
+    * Updating IE driver to fix clearing of <input study.type='number'> fields
     * Treat a null response to getCookies as [].
     * Restore a isNativeEventsEnabled check.
     * Updating TestNG.
@@ -194,12 +194,12 @@ WebDriver:
     * Buck version bumps
     * Update closure-library to 04a8ceefc6972511e669563d47abeca18b28092c
     * Firefox: implementing mouse doubleclick action via nsIDOMWindowUtils
-    * Add FluentWait.withMessage with string supplier
+    * Add FluentWait.withMessage with study.string supplier
     * Firefox: fixing events generated as a result of click on an element that disappears after the click.
     * Firefox: implementing mouse up/down actions via nsIDOMWindowUtils. This makes mouse actions "more native". In particular, if there are overlapping element at the click point, the driver will click the topmost element.
     * Safari: stop embedding the extension in the client libs, it should be downloaded and installed manually.
     * Deleting a couple of redundant casts
-    * No need to cast, the variable has required type already
+    * No need to cast, the variable has required study.type already
     * Deleting redundant logging to console in tests
     * HtmlUnit: Ignoring one more test
     * Disabling a test if JS is not enabled
@@ -211,7 +211,7 @@ WebDriver:
     * Resorting tests for moveByOffset action
     * Firefox: don't dispatch keypress event if defaultPrevent() of the keydown event is called because KEY_FLAG_PREVENT_DEFAULT has no effect
     * Moving IE specific test to IE test suite
-    * Firefox: throwing proper exception on an attempt to find an element in the deleted frame
+    * Firefox: throwing proper study.exception on an attempt to find an element in the deleted frame
     * Firefox: changing getCurrentUrl to return top level browsing context address (to conform to the standard)
     * Firefox: fixing page source for plain text pages
     * Adding information on the reasons to ignore tests
@@ -241,10 +241,10 @@ WebDriver:
     * Making timeout setting methods standard compliant
     * Fixing "no such alert" error mapping
     * Making findElement(s) commands standard compliant (except for link text locators)
-    * java: fix log string for RemoteTargetLocator#defaultContent
+    * java: fix log study.string for RemoteTargetLocator#defaultContent
     * Update check to see if we are speaking to a W3C remote end point
     * specificationLevel is defined in http://w3c.github.io/webdriver/webdriver-spec.html#capabilities
-    * use exception message.  no method overload exists for log.severe
+    * use study.exception message.  no method overload exists for log.severe
     * Upgrade HtmlUnit 2.18
     * ReflectionBackendDriverSupplier: two arguments Capabilities
     * HtmlUnitMouse: no need to .focus()
@@ -290,7 +290,7 @@ WebDriver:
   ExpectedConditions.frameToBeAvailableAndSwitchToIt support to index and
   WebElement so that WebDriverWait can use this mode to switch frames.
 * (provided by Joshua Bruning) Allow access to local profiler logs. An
-  exception may be thrown if the WebDriver server does not recognize profiler
+  study.exception may be thrown if the WebDriver server does not recognize profiler
   logs. In this case, the user should be able to see the local profiler logs.
 * (provided by Sergey Tikhomirov) Changed visibility of isDecoratableList
   method of DefaultFieldDecorator to protected for use with custom PageFactory
@@ -381,7 +381,7 @@ Other notable changes:
   to goog.global. (provided by juangj@google.com)
 * Add a method toList that allows converting CompositeAction to JSON
 * FirefoxDriver: Skip the profile cleaning step when launching Firefox
-* Implement both integer (legacy) and string (standard) response status
+* Implement both integer (legacy) and study.string (standard) response status
   for the JSON wire protocol
 * FirefoxDriver: Disable https://wiki.mozilla.org/Advocacy/heartbeat
   Firefox 37+ feature in browser sessions started by FirefoxDriver.
@@ -415,7 +415,7 @@ Other changes:
   case when an element is missing or disabled, this change will output
   exactly how Selenium is attempting to locate the element, such as
   the XPath or id of the element. This greatly speeds up
-  troubleshooting issues, as the exception message clearly states what
+  troubleshooting issues, as the study.exception message clearly states what
   element is broken/missing for common problems like an
   ElementNotFoundException.
 * improve ByCssSelector#toString
@@ -426,7 +426,7 @@ Other changes:
 * Fix issue 8254: Extensions were incorrectly transferred between
   Windows client and Linux grid node, because ZipEntry had incorrect
   name with '\' as separators.
-* Adding capabilities and browser type for Opera Blink, and
+* Adding capabilities and browser study.type for Opera Blink, and
   configuring tests to run in Opera Blink
 * Adding support for Blink-based Opera to Java binding
 * Adding Yosemite platform
@@ -444,7 +444,7 @@ v2.44.0
 
   * Updating Native events to support Firefox 24, 31, 32 and 33
   * Update calls to deprecated guava methods.
-  * Remove the deprecated DatabaseStorage interface. And callers. Note that the browser implementations may still have an implementation of these interfaces, but nothing in the main project implements it so we should be okay.
+  * Remove the deprecated DatabaseStorage interface. And callers. Note that the browser implementations may still have an implementation of these study.interfaces, but nothing in the main project implements it so we should be okay.
   * Bump the version of guava to 18
   * Bringing MarionetteConnection in line with the current marionette state (FF33)
   * Add new tests for some wait conditions Also add the ExpectedConditionsTest to the test suite.
@@ -464,8 +464,8 @@ v2.44.0
   * Remove unused static import of Ignore.Driver.HTMLUNIT.
   * Remove obsolete ChromeOptions code.
   * trim() HTTP response content because some drivers send back a response containing trailing null bytes, which the GSON parser does not like.
-  * If JsonParser.parse() fails to parse a string obtained from a reflective call to a toJson() method, assume it is a primitive string.
-        This is the case for, e.g., FirefoxProfile.toJson(), which returns a base64-encoded zip file. That string likely contains at least one '/', which the Gson parser rejects.
+  * If JsonParser.parse() fails to parse a study.string obtained from a reflective call to a toJson() method, assume it is a primitive study.string.
+        This is the case for, e.g., FirefoxProfile.toJson(), which returns a base64-encoded zip file. That study.string likely contains at least one '/', which the Gson parser rejects.
   * Fixing SessionId from json converter to better handle the case of null sessionId
   * Fix the Eclipse config. The new gson dependency wasn't added. Now is :) Also switched a call in HtmlUnitWebElement to use guava rather than commons-lang since that's already included in the build configs for both Buck and CrazyFun.
   * Get the Buck build working again.
@@ -559,7 +559,7 @@ WebDriver:
   * Make the jettyMaxThreads parameter actually be effective
   * Fix NullPointerException when File#listFiles() returns null. Fixes issue #1934
   * Making WDBS.start command a no-op if it was instantiated with an already started driver. Fixes issue 3993
-  * Handling possible exception in stringification of window.location. Fixes issue 3908
+  * Handling possible study.exception in stringification of window.location. Fixes issue 3908
 * Modified IE driver server to more closely follow W3C spec
 
     This commit includes a number of changes designed to bring the IE driver
@@ -635,7 +635,7 @@ WebDriver:
   * Fixing clicks on invisible elements in HtmlUnitDriver broken by ElementNotVisibleException being a subclass of InvalidElementStateException
   * Click after move with offset should use last mouse position
   * Adding new interface methods to the stubs
-  * Preserve wrapped test function's string representation for Mocah's BDD interface.
+  * Preserve wrapped test function's study.string representation for Mocah's BDD interface.
   * Fixing IE driver to allow JavaScript objects with property names with spaces
   * Ignoring IE6-only test failure for CSS
   * Bump the hmltunit version to 2.14
@@ -651,13 +651,13 @@ WebDriver:
   * java json converter chooses Long (Number base class). Fixing RemoteNetworkConnection
   * SUPPORTS_BROWSER_CONNECTION was removed, missed a reference
   * Clean up use deprecated methods & classes.
-  * ElementNotVisibleException is a type of InvalidElementStateException.
+  * ElementNotVisibleException is a study.type of InvalidElementStateException.
   * Tweak messaging on SafariDriver client page to better reflect what is happening. Also added a log message pointing users to the toolbar button that opens the driver log page.
   * Remove some no-op calls to deprecated functions.
   * Pull the logic for converting Command/Response pairs to and frame HTTP request/response pairs into a common codec instead of duplicating the logic on the client and server.
   * Change some tests to use Alert#accept() instead of Alert#dismiss() to get rid of alert dialogs. This is a workaround to ChromeDriver issue 764:
   * When running tests against the remote server, ignore two tests that use required capabilities. The remote server only supports desired capabilities on new session requests.
-  * Update two tests to work when running with a remote server, where the original js error will be the root exception, but not necessarily the second error in the cause chain.
+  * Update two tests to work when running with a remote server, where the original js error will be the root study.exception, but not necessarily the second error in the cause chain.
   * Test if we need to skip cookie tests for lack of a valid domain name before calling a method that asserts we have a valid domain name.
   * Convert HttpRequest/Response to POJOs; handle all conversion to and from HttpServletRequest/Response inside DriverServlet.
   * Every command handler returns ResultType.SUCCESS and those handlers that return an actual value do so through a level of indirection. This commit changes command handlers to just return results directly to the caller, making it possible to delete a lot of unnecessary code.
@@ -667,16 +667,16 @@ WebDriver:
   * Code comment changes for wait()
   * added task name to SCHEDULE_TASK event
   * Eclipse compiler update for Java 8 support
-  * Updating naive user agent string checks to account for IE11
+  * Updating naive user agent study.string checks to account for IE11
   * Adding Windows 8.1 detection to Platform.extractFromSysProperty
   * retry a test failure if there was a 'sauce' issue, like we exceeded the total time a test session is allowed to take.
   * adding Windows 8.1 platform, so we can use it in saucelabs for IE11 testing
   * Remove deprecated functions on webdriver.promise.Promise class * Use templates with webdriver.promise.Promise to improve types   documentation.
-  * Loosen input type to webdriver.stacktrace.getStack_ to account for an rare condition in FF 28+ where the Error() constructor returns undefined (not sure what causes it, just know it happens)
-  * Add ability to save an abitrary base64 string as a screenshot from a WebDriverJS test running in a browser.
+  * Loosen input study.type to webdriver.stacktrace.getStack_ to account for an rare condition in FF 28+ where the Error() constructor returns undefined (not sure what causes it, just know it happens)
+  * Add ability to save an abitrary base64 study.string as a screenshot from a WebDriverJS test running in a browser.
   * When Firefox is configured to accept all SSL certs (which is the default behavior), we need to set a time offset to prevent Firefox from using HSTS (HTTP Strict Transport Security). If we don't do this, Firefox will pre-fetch the certs for sites that should always be accessed over HTTPS and allows Firefox to catch man-in-the-middle attacks. While this is A Good Thing for users, it prevents WebDriver from accepting self-signed certs for these domains (e.g. when they are accessed through a HTTPS proxy).
   * Remove unnecessary dependency on bouncycastle.
-  * Making ChromeDriver directly implement the interfaces representing features it implements.
+  * Making ChromeDriver directly implement the study.interfaces representing features it implements.
   * Updating build process for Firefox native events components to use gecko 29 SDK
   * Updating buck version to latest OSS release
   * Use addEventListener if possible. Fixes issue 6680
@@ -795,20 +795,20 @@ WebDriver:
    very discoverable.
  * Imported PhantomJSDriver 1.1.0, removing 1.0.4 (previous version).
  * Implemented augmentation of previously augmented instances
- * Fixed JdkAugmenter's inability to add interfaces that are already implemented
+ * Fixed JdkAugmenter's inability to add study.interfaces that are already implemented
  * Removed org.openqa.selenium.net.INetAddress, an unnecessary abstraction
    around java.net.InetAddress.
  * (on behalf of Tobias Lidskog) Add ability to send --silent flag to
    chromedriver.
    when building an inverted predicate.
  * Implemented part of advanced user interactions using injected atoms
- * Fixed HtmlUnitDriver to handle timeout exception on refresh.
+ * Fixed HtmlUnitDriver to handle timeout study.exception on refresh.
  * Implemented page load timeouts in Firefox without stopping page
    loading.
  * Implemented pageLoadingStrategy capability in Firefox.
  * Migrated the WebDriverBackedSelenium to
    com.thoughtworks.selenium.webdriven. This also leaves behind a
-   deprecated implementation of each of the key interfaces to ease
+   deprecated implementation of each of the key study.interfaces to ease
    migration for users.
  * Implemented proper error code for the case of invalid css selector
    empty class name, and compound class name in atoms.
@@ -818,7 +818,7 @@ WebDriver:
    elements do not support the selection API (in fact, they throw when
    you try to access the property). This prevents us from fully
    simulating typing in the atoms.
- * FIXED: 2397: (on behalf of TommyBeadle) Fixed exception handling
+ * FIXED: 2397: (on behalf of TommyBeadle) Fixed study.exception handling
  * FIXED: 3991: Add Keys.chord(Iterable<CharSequence>) as a utility
    method.
  * FIXED: 4606: Stop web page loading after timeout.
@@ -856,7 +856,7 @@ WebDriverJS:
 Grid:
  * FIXED: 4589: Restrict the host where grid hub is listening if -host
    option is specified.
- * FIXED: 6445: Shorten string representation of capabilities in the
+ * FIXED: 6445: Shorten study.string representation of capabilities in the
    hub log and grid console.
 
 RC:
@@ -896,7 +896,7 @@ WebDriver:
     using a system property.
   * Removed hardcoded chromedriver version
   * SafariDriver WebElement#getTagName() should return a lowercase
-    string.
+    study.string.
   * If ChromeDriver fails to start, suppress any exceptions from the
     subsequent "clean-up" quit() so the error from start is not lost.
   * Added an alternate, and Android-friendly, implementation of the
@@ -926,7 +926,7 @@ WebDriver:
   * FIXED: 6358: Disabled Content Security Policy in Firefox.
   * FIXED: 6414: Fixed the way EventFiringWebDriver unwraps the
     underlying driver.
-  * FIXED: 6431: Catch an exception thrown if the chrome executable is
+  * FIXED: 6431: Catch an study.exception thrown if the chrome executable is
     not found and stop chromedriver before propagating it.
   * FIXED: 6445: Shortened Firefox profile textual representation in
     capabilities.
@@ -976,7 +976,7 @@ WebDriver:
   * Updated HttpClient to 4.3.
   * Updated version of Guava to 15.
   * Updated version of wgxpath.
-  * Return an empty string instead of "null" when the browserName and
+  * Return an empty study.string instead of "null" when the browserName and
     version capabilities are not set.
   * Stop propagation of the webdriver-evaluate custom event when
     executing user supplied JavaScript. Without this change, the event
@@ -1019,7 +1019,7 @@ v2.35.0
 =======
 WebDriver:
   * Updated Firefox native event components to support Firefox 23.
-  * Removing deprecated interactions interfaces (Keyboard, Mouse,
+  * Removing deprecated interactions study.interfaces (Keyboard, Mouse,
     TouchScreen).
   * Updated operadriver to 1.4.
   * Introduced ie.setProxyByServer capability to select how IE browser
@@ -1135,7 +1135,7 @@ WebDriver:
   * FIXED: 4790: Improvements made to Firefox startup in highly
     concurrent environments.
   * FIXED: 5045: Added support for fetching logs from SafariDriver.
-  * FIXED: 5652: Adding unhandled alert text to the exception message.
+  * FIXED: 5652: Adding unhandled alert text to the study.exception message.
   * Added LogType.PERFORMANCE, supported in chromedriver2 0.9+.
 
 WebDriver JS:
@@ -1167,7 +1167,7 @@ WebDriver:
   This release supports Firefox verions: 10esr, 17esr, 19, 20
 
   * Let WindowsUtils.killPID() kill the whole process tree
-  * Implementing support for implicit "submit" button type in
+  * Implementing support for implicit "submit" button study.type in
     HtmlUnitDriver.
   * bug fix for python hang with 302 response
   * Adding better support for SVG within Firefox. Has better scrolling
@@ -1224,9 +1224,9 @@ JS:
    several low-level classes and functions in the promise module:
 
       promise.Application                                 -> promise.ControlFlow
-        #schedule(string, function)                       ->   #execute(function, [string])
-        #scheduleTimeout(string, number)                  ->   #timeout(number, [string])
-        #scheduleWait(string, function, number, [string]) ->   #wait(function, number, [string])
+        #schedule(study.string, function)                       ->   #execute(function, [study.string])
+        #scheduleTimeout(study.string, number)                  ->   #timeout(number, [study.string])
+        #scheduleWait(study.string, function, number, [study.string]) ->   #wait(function, number, [study.string])
 
     The old schedule* functions are still present, but will print a
     warning message if called. They will be removed in 2.31.
@@ -1284,7 +1284,7 @@ WebDriver:
   * .Net: Introduces the Updating the CustomFinderType property to the
     .NET FindsByAttribute. This allows use of custom By subclasses in
     the PageFactory. The custom finder must be a subclass of By, and
-    it must expose a public constructor that takes a string argument.
+    it must expose a public constructor that takes a study.string argument.
   * SafariDriver: better attempts to catch native dialogs from user
     defined onbeforeunload handlers.
   * Updating HtmlUnit to 2.11
@@ -1333,7 +1333,7 @@ WebDriver:
   * FIXED: 3043: Better error message reporting when browser launch
     fails.
   * FIXED: 4490: Checking script evaluation result to prevent null
-    reference exception.
+    reference study.exception.
   * FIXED: 4736: Added all of the extended colour keywords to the
     Colors enum in support of
     http://www.w3.org/wiki/CSS3/Color/Extended_color_keywords.
@@ -1435,7 +1435,7 @@ WebDriver:
 
 WebDriverJS:
   * Better stack traces from test code.
-  * Update webdriver.atoms.element.type to recognize
+  * Update webdriver.atoms.element.study.type to recognize
     webdriver.Key.SEPARATOR
 
 RC:
@@ -1531,7 +1531,7 @@ Grid:
     network location (UNC path)
 
 Atoms:
-  * bot.actions.type now works as expected in Firefox 12.
+  * bot.actions.study.type now works as expected in Firefox 12.
   * Introduced better mouse and keyboard abstractions
 
 
@@ -1755,7 +1755,7 @@ RC:
   * IE HTA mode will now close the final window.
   * All windows are now opened as "resizable". This means that they
     should always open in new windows rather than tabs in IE.
-  * *chrome mode can type into file input elements on Firefox 8+
+  * *chrome mode can study.type into file input elements on Firefox 8+
   * WebDriverCommandProcessor has all constructors depending on the
     (deprecated) SuppliesWebDriver class marked as deprecated. Will be
     deleted in the next release.
@@ -1812,7 +1812,7 @@ WebDriver:
   * Fixed issue with scrolling on small viewports with native events
     in Firefox.
   * FIXED: 2889: FluentWait supports adding a custom message to
-    timeout exception.
+    timeout study.exception.
   * FIXED 2798: When implicit waits are enabled in the FirefoxDriver,
     stale element reference errors when searching for child elements
     are now handled properly
@@ -1829,7 +1829,7 @@ Grid:
   * Now support iOS nodes.
 
 Known issues:
-  * Continuing problems with element out of bounds exception being
+  * Continuing problems with element out of bounds study.exception being
     thrown.
 
 
@@ -1862,7 +1862,7 @@ Grid:
 Known issues:
   * Synthesized mouse events are inaccurate (Affects Firefox driver users
     on OS X) (2281)
-  * Invalid move target out of bounds exception thrown.2700
+  * Invalid move target out of bounds study.exception thrown.2700
   * Dragged elements end up in the wrong location, with the Firefox driver,
     when scrolling is required (typically with small viewport) (2877)
 
@@ -2086,7 +2086,7 @@ WebDriver:
   * Alert handling works in Chrome.
   * Merge of Google-contributed code into the underlying Atoms.
   * FIXED: Internet Explorer crashes when an element has empty text and getText called.
-  * FIXED: IBM JDK throws different exception when unable to bind to a socket.
+  * FIXED: IBM JDK throws different study.exception when unable to bind to a socket.
 
 
 v2.2.0
@@ -2123,7 +2123,7 @@ WebDriver:
 Grid:
   * Properly form the HTML output for console display.
   * Track when a session has become orphaned.  I.e., when the client sends no
-    commands after the initial session creation.  This almost always indicates
+    commands after the study.initial session creation.  This almost always indicates
     the client is no longer connected and the session is unusable immediately.
 
 

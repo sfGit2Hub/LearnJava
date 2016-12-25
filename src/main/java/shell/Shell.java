@@ -88,7 +88,7 @@ public class Shell {
             channel.setOutputStream(System.out);
 
       /*
-      // Choose the pty-type "vt102".
+      // Choose the pty-study.type "vt102".
       ((ChannelShell)channel).setPtyType("vt102");
       */
 

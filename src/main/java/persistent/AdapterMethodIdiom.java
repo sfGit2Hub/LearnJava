@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class AdapterMethodIdiom {
     public static void main(String[] args){
         ReversibleArrayList<String> ral = new ReversibleArrayList<>(
-                Arrays.asList("The string is split !".split(" "))
+                Arrays.asList("The study.string is split !".split(" "))
         );
 
         for (String s : ral) {
