@@ -27,9 +27,8 @@ public class StreamDemo {
     public static void useFunction(){
         List<String> list = Arrays.asList("aa", "bb", "cc", "a", "b", "c","a", "aa", "ab", "cc", "bb", "bc");
         list.stream().filter(e -> e.length()>=2).forEach(e -> System.out.print(e + ","));
-        list.stream().distinct().collect(Collectors.toList());
+        List list1 = list.stream().distinct().collect(Collectors.toList());
         List<Integer> integerList = Arrays.asList(1, 2, 3, 8, 9, 6, 4, 2, 3, 7, 6);
-//        DoubleStream doubleStream = integerList.stream().mapToDouble((value) -> value * 1.0);
         integerList.stream().map(var -> {
             var++;
             var += 2;
