@@ -8,7 +8,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-public class JedisUtil {
+public class JedisUtils {
 
     private static final String JEDIS_IP = "127.0.0.1";
     private static final int JEDIS_PORT = 6379;
