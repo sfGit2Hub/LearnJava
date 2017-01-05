@@ -15,31 +15,40 @@ public class Person implements Serializable{
         return name;
     }
 
-    public void setName(String name) {
+    public Person setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public Person setID(String ID) {
         this.ID = ID;
+        return this;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public Person setAge(int age) {
         this.age = age;
+        return this;
     }
 
     public Sex getSex() {
         return sex;
     }
 
-    public void setSex(Sex sex) {
+    public Person setSex(Sex sex) {
         this.sex = sex;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "name: " + this.name +"\tage: " + this.age + "\tID: " + this.ID + "\tsex: " + this.sex;
     }
 }
