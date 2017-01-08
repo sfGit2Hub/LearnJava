@@ -5,14 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>LearnJava</groupId>
-    <artifactId>LearnJava</artifactId>
+    <artifactId>java-project</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>sf-project</name>
-    <modules>
-        <module>spring-project</module>
-        <module>java-project</module>
-    </modules>
     <build>
         <plugins>
             <plugin>
@@ -86,5 +80,4 @@
             <version>3.4.6</version>
         </dependency>
     </dependencies>
-
 </project>
