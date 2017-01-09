@@ -30,12 +30,16 @@ public class InputStreamDemo {
 
     public static void main(String[] args) {
         try {
-            FileInputStream fileIn = new FileInputStream("D:\\Project\\Redis\\redis.windows.conf");
-//            byte[] input = new byte[1024];
-//            fileIn.read(input);
-//            FileOutputStream fileOut = new FileOutputStream("log/project.log");
-//            fileOut.write(input);
-            bytesInputStream(fileIn);
+            System.out.println(System.getProperty("user.dir"));
+//            InputStream inputStream = InputStreamDemo.class.getClassLoader().getResourceAsStream("log4j2.xml");
+            FileInputStream fileIn = new FileInputStream("selenium-java-2.53.0.zip");
+            FileOutputStream fileOut = new FileOutputStream("log/project_1.zip");
+            byte[] input = new byte[1024];
+            while (fileIn.read(input)>0){
+                fileOut.write(input);
+                fileOut.flush();
+            }
+//            bytesInputStream(fileIn);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -12,7 +12,7 @@ public class ReaderAndWriter {
     private StringWriter stringWriter;
     private CharArrayReader charArrayReader;
     private CharArrayWriter charArrayWriter;
-    private BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+    private BufferedWriter bufferedWriter;
     private BufferedReader bufferedReader;
 
     protected ReaderAndWriter(){}
@@ -75,5 +75,56 @@ public class ReaderAndWriter {
         return fileReader.read(text);
     }
 
+    public static void main(String[] args) {
+        ReaderAndWriter readerAndWriter = new ReaderAndWriter();
+        try {
+            readerAndWriter.fileReader = new FileReader(new File("log/project.log"));
+            readerAndWriter.fileWriter = new FileWriter(new File("log/project_1.log"));
+//            readerAndWriter.fileReader.skip(10);
+            int read = readerAndWriter.fileReader.read();
+            while ( read > 0) {
+                readerAndWriter.fileWriter.write(read);
+                read = readerAndWriter.fileReader.read();
+                readerAndWriter.fileWriter.flush();
+            }
+            /*char[] text = new char[1024];
+            while (readerAndWriter.fileReader.read(text) > 0) {
+                readerAndWriter.fileWriter.write(text);
+                readerAndWriter.fileWriter.flush();
+            }*/
+//            readerAndWriter.fileReader.getEncoding();
 
+//            fileStreamDemo();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                readerAndWriter.fileWriter.close();
+                readerAndWriter.fileReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void fileStreamDemo() throws IOException{
+        FileInputStream fileInputStream = null;
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileInputStream = new FileInputStream(new File("E:\\迅雷下载\\电影\\冲天破.mkv"));
+            fileOutputStream = new FileOutputStream(new File("E:\\迅雷下载\\电影\\冲天破_1.mkv"));
+            byte[] tempBytes = new byte[1024];
+            while (fileInputStream.read(tempBytes) > 0) {
+                fileOutputStream.write(tempBytes);
+                fileOutputStream.flush();
+            }
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            fileInputStream.close();
+            fileOutputStream.close();
+        }
+    }
 }
