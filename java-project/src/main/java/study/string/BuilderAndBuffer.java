@@ -37,5 +37,9 @@ public class BuilderAndBuffer {
     public static void main(String[] args) {
         BufferedToString();
         BuilderToString();
+        String url = "https://www.cloudfront.net/dev/dsone/2A233F6AC72D400B92D7B541073016AD/roomType/20170113172947549.png";
+        int index = url.lastIndexOf(".");
+        String newUrl = url.substring(0, index) + "_s" + url.substring(index);
+        System.out.println(newUrl);
     }
 }
