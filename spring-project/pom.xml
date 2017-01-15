@@ -10,6 +10,8 @@
     <properties>
         <spring.version>4.3.4.RELEASE</spring.version>
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
+        <spring.data.mongodb>1.9.5.RELEASE</spring.data.mongodb>
+        <spring.data.redis>1.8.0.M1</spring.data.redis>
     </properties>
 
     <dependencies>
@@ -108,6 +110,21 @@
             <artifactId>spring-security-crypto</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>${spring.data.mongodb}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring.data.redis}</version>
+        </dependency>
+
+
 
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
