@@ -9,6 +9,10 @@ public class DigestThreadCallback {
     private byte[] digest;
     private String filename;
 
+    DigestThreadCallback(String filename) {
+        this.filename = filename;
+    }
+
     public void calculateDigest() {
         DigestThread digestThread = new DigestThread(filename, this);
         Thread thread = new Thread(digestThread);
@@ -29,5 +33,12 @@ public class DigestThreadCallback {
             result += "digest not available";
         }
         return result;
+    }
+
+    public void main(String[] args) {
+        for(String filename : args) {
+            DigestThreadCallback callback = new DigestThreadCallback(filename);
+            callback.calculateDigest();
+        }
     }
 }
