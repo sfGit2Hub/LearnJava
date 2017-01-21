@@ -10,7 +10,7 @@
     <properties>
         <spring.version>4.3.4.RELEASE</spring.version>
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
-        <spring.data.mongodb>1.9.5.RELEASE</spring.data.mongodb>
+        <spring.data.mongodb>1.8.4.RELEASE</spring.data.mongodb>
         <spring.data.redis>1.7.2.RELEASE</spring.data.redis>
         <war.name>spring-project</war.name>
     </properties>
@@ -27,7 +27,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.4</version>
+                <!--<version>2.4</version>-->
                 <configuration>
                     <warName>${war.name}</warName>
                     <archive>

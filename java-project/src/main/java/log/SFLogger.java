@@ -10,12 +10,11 @@ import java.util.logging.*;
  */
 public class SFLogger {
     private static Logger logger;
-
-    public static void info(String message) {
-        logger.setLevel(Level.INFO);
+    private static FileHandler fileHandler;
+    static {
         try {
-//            ConsoleHandler consoleHandler = new ConsoleHandler();
-            FileHandler fileHandler = new FileHandler("log\\project.log", true);
+            fileHandler = new FileHandler("log\\project.log", true);
+            //            ConsoleHandler consoleHandler = new ConsoleHandler();
             fileHandler.setLevel(Level.ALL);
             fileHandler.setEncoding("UTF-8");
             fileHandler.setFormatter(new Formatter() {
@@ -37,7 +36,13 @@ public class SFLogger {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        logger.info(message);
+    }
+
+    public synchronized static void info(String message) {
+        logger.setLevel(Level.INFO);
+        synchronized (logger) {
+            logger.info(message);
+        }
     }
 
     public static Logger getLogger(String className) {
