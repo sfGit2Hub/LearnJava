@@ -5,7 +5,7 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:property-placeholder location="classpath*:*.properties"/>
+    <context:property-placeholder location="classpath*:spring.properties"/>
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
     <context:component-scan base-package="com.sf.web.controller" />
 
@@ -47,7 +47,7 @@
         <!--<property name="maxInMemorySize" value="4096"/>-->
     </bean>
 
-    <mvc:resources location="/src/main/web/static/" mapping="/static/**"/>
+    <mvc:resources location="/src/main/webapp/static/" mapping="/static/**"/>
 
     <bean id="exceptionResolver" class="com.sf.web.exception.DefaultMappingExceptionResolver">
         <property name="exceptionMappings">
