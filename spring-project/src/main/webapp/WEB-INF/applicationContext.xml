@@ -47,7 +47,7 @@
         <!--<property name="maxInMemorySize" value="4096"/>-->
     </bean>
 
-    <mvc:resources location="/src/main/webapp/static/" mapping="/static/**"/>
+    <mvc:resources location="static/" mapping="/static/**"/>
 
     <bean id="exceptionResolver" class="com.sf.web.exception.DefaultMappingExceptionResolver">
         <property name="exceptionMappings">
