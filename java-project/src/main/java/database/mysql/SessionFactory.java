@@ -6,7 +6,7 @@ import java.sql.*;
  * Created by SF on 2017/1/22.
  */
 public class SessionFactory {
-    private static final String URL = "jdbc:mysql:localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull";
+    private static final String URL = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
@@ -31,8 +31,11 @@ public class SessionFactory {
             Statement statement = createConnect().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                String id = resultSet.getString("id");
+                long id = resultSet.getLong("id");
                 System.out.println(id);
+
+                String name = resultSet.getString("name");
+                System.out.println(name);
             }
 //            resultSet.getString(1);
 //            boolean flag = statement.execute(query);
