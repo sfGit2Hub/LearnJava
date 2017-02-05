@@ -44,8 +44,25 @@ public class SessionFactory {
         }
     }
 
+    public void prepQuery() {
+        try {
+            PreparedStatement statement = createConnect().prepareStatement("INSERT INTO " +
+                    "product_detail(`name`, `num`, `description`) " +
+                    "VALUES (?, ?, ?)");
+//            long id = 1;
+//            statement.setLong(1, id);
+            statement.setString(1, "orange");
+            statement.setInt(2, 12);
+            statement.setString(3, "Test string");
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         String sql = "select * from product_detail;";
         new SessionFactory().staticQuery(sql);
+        new SessionFactory().prepQuery();
     }
 }
