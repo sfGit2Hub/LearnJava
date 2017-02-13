@@ -1,5 +1,9 @@
 package study.java8.stream;
 
+import common.use.Person;
+import common.use.Sex;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -44,7 +48,24 @@ public class StreamDemo {
         System.out.println(list);
     }
 
+    public static void generateData() {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person().setAge(21).setName("a").setSex(Sex.FEMALE));
+        persons.add(new Person().setAge(10).setName("b").setSex(Sex.FEMALE));
+        persons.add(new Person().setAge(18).setName("c").setSex(Sex.MALE));
+        persons.add(new Person().setAge(22).setName("d").setSex(Sex.MALE));
+        String name = null;
+        System.out.println("=============================");
+//        filter 条件不可为null 否则报错
+        persons.stream().filter(person -> person.getName().contains(name))
+                .filter(person -> person.getAge() > 20)
+                .forEach(person -> System.out.println(person));
+//        一个流只能被执行一次
+    }
+
     public static void main(String []args){
         useFunction();
+        generateData();
+
     }
 }
