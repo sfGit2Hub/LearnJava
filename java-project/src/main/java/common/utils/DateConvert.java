@@ -1,4 +1,4 @@
-package study.java8.time;
+package common.utils;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -13,11 +13,20 @@ public class DateConvert {
     }
 
     public static String formatDateAndLocale(Date date, Locale locale) {
+        if (Objects.isNull(date)) {
+            return null;
+        }
+        if (Objects.isNull(locale)) {
+            locale = Locale.ENGLISH;
+        }
         //多语言情况下格式化
         return new SimpleDateFormat("dd MMM yyyy", locale).format(date);
     }
 
     public static String formatDate(Date date, String pattern) {
+        if (Objects.isNull(date)) {
+            return null;
+        }
         if (Objects.isNull(pattern)) {
             pattern = "dd MMM yyyy";
         }
