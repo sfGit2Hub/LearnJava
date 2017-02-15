@@ -24,6 +24,9 @@ public class LocalProxySelector extends ProxySelector {
         return result;
     }
 
+    /**
+     * 用作回调使用，警告程序这个代理服务器实际上没有建立连接
+     */
     @Override
     public void connectFailed(URI uri, SocketAddress sa, IOException ioe) {
         fail.add(uri);
