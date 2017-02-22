@@ -10,6 +10,7 @@ public class Person implements Serializable{
     private String ID;
     private int age;
     private Sex sex;
+    private boolean isMarried;
 
     public String getName() {
         return name;
@@ -47,8 +48,18 @@ public class Person implements Serializable{
         return this;
     }
 
+    public boolean isMarried() {
+        return isMarried;
+    }
+
+    public Person setMarried(boolean married) {
+        isMarried = married;
+        return this;
+    }
+
     @Override
     public String toString() {
-        return "name: " + this.name +"\tage: " + this.age + "\tID: " + this.ID + "\tsex: " + this.sex;
+        return "name: " + this.name +"\tage: " + this.age + "\tID: " + this.ID + "\tsex: " + this.sex
+                + "\tmarried: " + isMarried;
     }
 }
