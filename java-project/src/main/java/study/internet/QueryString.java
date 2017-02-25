@@ -6,26 +6,30 @@ import java.net.URLEncoder;
 public class QueryString {
     private StringBuilder query = new StringBuilder();
 
-    private synchronized QueryString add(String name, String value) {
-        if (query.indexOf("&") != -1) {
-            query.append("&");
-        }
-        try {
-            query.append(URLEncoder.encode(name, "utf-8"))
-                    .append("=")
-                    .append(URLEncoder.encode(value, "utf-8"));
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
-        return this;
+    public QueryString() {
     }
 
-    private synchronized String getQuery() {
+    public synchronized void add(String name, String value) {
+        query.append('&');
+        encode(name, value);
+    }
+
+    private synchronized void encode(String name, String value) {
+        try {
+            query.append(URLEncoder.encode(name, "UTF-8"));
+            query.append('=');
+            query.append(URLEncoder.encode(value, "UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException("Broken VM does not support UTF-8");
+        }
+    }
+
+    public synchronized String getQuery() {
         return query.toString();
     }
 
     @Override
     public String toString() {
-        return this.getQuery();
+        return getQuery();
     }
 }

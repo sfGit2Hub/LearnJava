@@ -71,6 +71,7 @@ public class URLConnectTest {
             URLConnectTest url = new URLConnectTest("http://www.baidu.com");
             URLConnectTest picUrl = new URLConnectTest("http://avatar.csdn.net/8/4/4/1_sf_cyl.jpg");
             System.out.println(url.getWebPage());
+//            System.out.println("Content-Encode:\t" + url.connection.getContentEncoding());
             Map<String, List<String>> headFields = url.getHeadFields();
             for (Map.Entry<String, List<String>> entry : headFields.entrySet()){
                 final String[] value = {""};
