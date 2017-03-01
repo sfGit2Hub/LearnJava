@@ -7,7 +7,6 @@ import java.net.*;
 public class FormPoster {
 
     private URL url;
-    // from Chapter 5, Example 5-8
     private QueryString query = new QueryString();
 
     public FormPoster (URL url) {
@@ -19,7 +18,7 @@ public class FormPoster {
     }
 
     public void add(String name, String value) {
-        query.add(name, value);
+        this.query.add(name, value);
     }
 
     public URL getURL() {
@@ -27,7 +26,6 @@ public class FormPoster {
     }
 
     public InputStream post() throws IOException {
-
         // open the connection and prepare it to POST
         URLConnection uc = url.openConnection();
         uc.setDoOutput(true);

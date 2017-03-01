@@ -12,6 +12,7 @@ import java.util.Objects;
 
 public class DateConvert {
     private static String DEFAULT_PATTERN = "yyyy-MM-dd";
+    private static Locale DEFAULT_LOCALE = Locale.ENGLISH;
 
     public static LocalDate dateToLocalDate(Date date, ZoneId zoneId) {
         return date.toInstant().atZone(zoneId).toLocalDate();
