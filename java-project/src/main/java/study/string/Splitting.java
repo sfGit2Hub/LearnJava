@@ -23,6 +23,8 @@ public class Splitting {
     }
 
     public static void main(String[] args) {
+        String test = "111111";
+        System.out.println(test.split(";")[0]);
         split(" ");
         split("\\W+");//一个或多个非单词字符
         split("n\\W+");
