@@ -4,6 +4,7 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,11 +30,15 @@ public class SecureServerSocket {
             while (true) {
                 try (
                         Socket connection = server.accept();
-                        InputStream in = connection.getInputStream()){
-                    int c;
-                    while ((c = in.read()) != -1) {
-                        System.out.write(c);
+                        InputStream in = new BufferedInputStream(connection.getInputStream())
+                ){
+                    StringBuilder request = new StringBuilder(80);
+                    while (true) {
+                        int c = in.read();
+                        if (c == '\r' || c == '\n' || c == -1) break;
+                        request.append((char) c);
                     }
+                    System.out.println(request.toString());
                 }
             }
         } catch (NoSuchAlgorithmException
@@ -82,6 +87,7 @@ public class SecureServerSocket {
         System.arraycopy(anonCipherSuitesSupported, 0, newEnabled, oldEnabled.length, numAnonCipherSuitesSupported);
 
         server.setEnabledCipherSuites(newEnabled);
+//        server.setNeedClientAuth(false);        //不需要客户端进行认证
         return server;
     }
 }
