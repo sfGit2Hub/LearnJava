@@ -1,5 +1,6 @@
 package study.collections;
 
+import common.use.Person;
 import study.type.Cat;
 
 import java.util.HashMap;
@@ -66,6 +67,12 @@ public class MapImmutabel {
         return builder.toString();
     }
 
+    public static void testMap() {
+        Map<String, Object> map = new HashMap<>();
+        Person person = (Person) map.get("person");
+        System.out.println(person);
+    }
+
     public static void main(String []args) {
         Map<String, String> aliasName = new HashMap<>();
         aliasName.put("sf", "abel");
@@ -78,5 +85,7 @@ public class MapImmutabel {
         mapImmutabel.getAliasName().put("gg", "mm");
 
         System.out.println(mapImmutabel);
+
+        testMap();
     }
 }
