@@ -12,6 +12,7 @@
     <modules>
         <module>spring-project</module>
         <module>java-project</module>
+        <module>java-web</module>
     </modules>
     <build>
         <plugins>
