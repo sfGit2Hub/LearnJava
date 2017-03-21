@@ -63,6 +63,11 @@ public class Conversion {
         f.format("h-散列码十六进制: %h\n", x);
 //        f.format("x-整数十六进制: %x\n", x);
         System.out.println("----------------");
+
+        char test = 8217;
+        char currency = 8364;
+        System.out.println(test);
+        System.out.println(currency);
     }
 
 }
