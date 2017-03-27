@@ -23,8 +23,12 @@ public class Splitting {
     }
 
     public static void main(String[] args) {
-        String test = "111111";
-        System.out.println(test.split(";")[0]);
+        String test = "11;11,aa";
+        System.out.println(Arrays.toString(test.split("[!]")));
+        String[] s = test.split("[,|;]");
+        for (int i = 0; i < s.length; i++) {
+            System.out.println(s[i]);
+        }
         split(" ");
         split("\\W+");//一个或多个非单词字符
         split("n\\W+");

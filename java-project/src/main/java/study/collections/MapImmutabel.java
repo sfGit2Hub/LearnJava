@@ -70,7 +70,8 @@ public class MapImmutabel {
     public static void testMap() {
         Map<String, Object> map = new HashMap<>();
         Person person = (Person) map.get("person");
-        System.out.println(person);
+        String str = (String) map.get("string");
+        System.out.println(str);
     }
 
     public static void main(String []args) {
