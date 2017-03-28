@@ -13,6 +13,11 @@
     <groupId>LearnJava</groupId>
     <artifactId>java-project</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <!--<properties>-->
+        <!--<project.build>-->
+        <!--</project.build>-->
+    <!--</properties>-->
+
     <build>
         <plugins>
             <plugin>
@@ -21,12 +26,29 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>utf8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.7</version>
+                <configuration>
+                    <complianceLevel>1.8</complianceLevel>
+                    <encoding>utf8</encoding>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.2</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
         <dependency>
             <groupId>com.jcraft</groupId>
