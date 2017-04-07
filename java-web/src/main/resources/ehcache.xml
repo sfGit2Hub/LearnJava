@@ -27,7 +27,11 @@
            timeToLiveSeconds="3600"
            timeToIdleSeconds="3600"
            overflowToDisk="true"
+           diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="120"
            memoryStoreEvictionPolicy="LFU">
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
+        <bootstrapCacheLoaderFactory class="net.sf.ehcache.store.DiskStoreBootstrapCacheLoaderFactory" properties="bootstrapAsynchronously=true" />
     </cache>
     <!--timeToIdleSeconds 当缓存闲置n秒后销毁 -->
     <!--timeToLiveSeconds 当缓存存活n秒后销毁 -->
