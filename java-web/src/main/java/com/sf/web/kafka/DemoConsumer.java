@@ -1,9 +1,12 @@
 package com.sf.web.kafka;
 
+import com.google.gson.Gson;
+import common.use.Person;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -14,12 +17,11 @@ public class DemoConsumer {
     private static Properties props;
     static {
         props = new Properties();
-        props.put("bootstrap.servers", "192.168.216.128:9092");
-        props.put("group.id", "test-consumer-group");
-        props.put("enable.auto.commit", "true");
-        props.put("auto.commit.interval.ms", "1000");
-        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        try {
+            props.load(DemoProducer.class.getClassLoader().getResourceAsStream("kafkaConsumer.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String []args) {
@@ -27,8 +29,11 @@ public class DemoConsumer {
         consumer.subscribe(Arrays.asList("test"));
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records)
+            for (ConsumerRecord<String, String> record : records) {
                 System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+                Person person = new Gson().fromJson(record.value(), Person.class);
+                System.out.println(person);
+            }
         }
     }
 }
