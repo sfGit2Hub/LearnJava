@@ -24,7 +24,7 @@ public class DemoProducer {
 
     public static void main(String[] args) {
         Producer<String, String> producer = new KafkaProducer<>(props);
-        for(int i = 0; i < 100; i++) {
+        for(int i = 100; i < 200; i++) {
             Person person = new Person().setName("person" + i).setID("ID-" + i).setAge(10);
             producer.send(new ProducerRecord<String, String>("test", Integer.toString(i), new Gson().toJson(person)));
             System.out.println(i);
