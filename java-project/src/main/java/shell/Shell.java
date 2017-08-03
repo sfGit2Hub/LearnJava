@@ -32,7 +32,7 @@ public class Shell {
             String user = host.substring(0, host.indexOf('@'));
             host = host.substring(host.indexOf('@') + 1);
 
-            Session session = jsch.getSession(user, host, 22);
+            Session session = jsch.getSession(user, host, 80);
 
             String passwd = JOptionPane.showInputDialog("Enter password");
             session.setPassword(passwd);

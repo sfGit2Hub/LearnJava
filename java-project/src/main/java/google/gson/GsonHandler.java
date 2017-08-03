@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import study.type.Cat;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,5 +26,11 @@ public class GsonHandler {
         mapImmutabel.setPet(new Cat("mm"));
 
         System.out.println(gson.toJson(mapImmutabel));
+
+        List<String> listStr = new LinkedList<>();
+        listStr.add("aaa");
+        listStr.add("bbb");
+        listStr.add("ccc");
+        System.out.println(gson.toJson(listStr));
     }
 }
