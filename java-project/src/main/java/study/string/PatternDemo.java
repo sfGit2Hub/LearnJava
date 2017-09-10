@@ -13,11 +13,17 @@ import java.util.regex.Pattern;
  * 传入一个正则表达式
  */
 public class PatternDemo {
-    private static String s = "abcabcabcdefabc";
+    private static String s = "abcabcabcdefabc (Test)";
     private static String email = "sf_work@foxmail.com";
     private static String[] regexs = {"abc+","(abc)+","(abc){2,}"};
     private static String regexEmail = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+    private static String ignoreCase = "(t|T)(e|E)(s|S)(t|T)";
     public static void main(String[] args) {
+        Pattern testPattern = Pattern.compile("测试", Pattern.CASE_INSENSITIVE);
+        Matcher testMatcher = testPattern.matcher("测试用 hotel");
+
+        System.out.println("ignore case result:" + testMatcher.find());
+        System.out.println("replace \"test\" result:" + "TEst hotel".replaceAll(ignoreCase, "aaa"));
         for (String regex : regexs) {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(s);
