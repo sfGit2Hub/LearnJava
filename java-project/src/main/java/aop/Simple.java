@@ -12,6 +12,7 @@ public class Simple {
         System.out.println("[src] construct");
     }
 
+    @ParameterChange(parameterClass = String.class)
     public String welcome(String name) {
         System.out.println("[src]===========start===========");
         System.out.println("[src] welcome method execute");
