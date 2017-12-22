@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Created by SF on 2017/3/28.
  */
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface ParameterChange {
     int parameterIndex() default 0;

@@ -18,10 +18,10 @@ public class TimeHandle implements InvocationHandle {
     }
 
     @Override
-    public void invoke(Object o, Method m) {
+    public void invoke(Object o, Method m, Object... args) {
         System.out.println("Execute method start time: " + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
         try {
-            m.invoke(target);
+            m.invoke(target, args);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

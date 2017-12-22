@@ -1,7 +1,6 @@
 package aop;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import common.use.Person;
 
 /**
  * Created by SF on 2017/3/28.
@@ -33,13 +32,13 @@ public class Simple {
 
         //为用户管理添加事务处理
         InvocationHandle h = new TransactionHandle(mgr);
-        UserMgr u = (UserMgr)Proxy.newProxInstance(UserMgr.class,h);
+        UserMgr u = (UserMgr)Proxy.newProxyInstance(UserMgr.class, h);
 
         //为用户管理添加显示方法执行时间的功能
         TimeHandle h2 = new TimeHandle(u);
-        u = (UserMgr)Proxy.newProxInstance(UserMgr.class, h2);
+        u = (UserMgr)Proxy.newProxyInstance(UserMgr.class, h2);
 
-        u.addUser();
+        u.addUser(new Person().setAge(20).setID("ID:123").setName("abel").setMarried(true));
         System.out.println("\r\n===========================\r\n");
         u.delUser();
     }

@@ -14,7 +14,7 @@ import java.net.URLClassLoader;
  * Created by SF on 2017/12/15.
  */
 public class Proxy {
-    public static Object newProxInstance(Class infce, InvocationHandle handler) throws Exception{
+    public static Object newProxyInstance(Class infce, InvocationHandle handler) throws Exception{
         String methodStr = "";
         String rn = "\r\n";
         Method[] methods = infce.getMethods();
@@ -23,16 +23,22 @@ public class Proxy {
             String argsStr = "";
             int argsIndex = 0;
             for (int i = 0; i < argsTypes.length; i++) {
-                argsStr += argsTypes[i].getName() + " arg" + argsIndex;
+                argsStr += argsTypes[i].getName() + " arg" + argsIndex++;
                 if (i != argsTypes.length - 1) {
                     argsStr += ", ";
                 }
             }
+            String jsonPrintStr = "", invokeArgs = "";
+            for (int i = 0; i < argsIndex; i++) {
+                invokeArgs += ",arg" + i;
+                jsonPrintStr += "          System.out.println(JSON.toJSONString(arg"+ i +"));" + rn;
+            }
             methodStr += "  @Override" + rn +
-                         "  public " + method.getReturnType() + " " + method.getName() + "(){" + rn +
+                         "  public " + method.getReturnType() + " " + method.getName() + "("+ argsStr +"){" + rn +
                          "      try{" + rn +
                          "          Method md = " + infce.getName() + ".class.getMethod(\"" + method.getName() + "\");" + rn +
-                         "          h.invoke(this, md);" + rn +
+                         "          h.invoke(this, md"+ invokeArgs + ");" + rn +
+                                    jsonPrintStr +
                          "      }catch(Exception e){e.printStackTrace();}" + rn +
                          "  }" + rn;
         }
@@ -40,6 +46,8 @@ public class Proxy {
 //        生成Java文件
         String srcCode = "package aop;" + rn +
                          "import java.lang.reflect.Method;" + rn +
+                         "import com.alibaba.fastjson.JSON;" + rn +
+                         "import common.use.Person;" + rn +
                          "public class $ProxyT implements " + infce.getName() + "{" + rn +
                          "  public $ProxyT(InvocationHandle h){" + rn +
                          "      this.h = h;"  + rn +

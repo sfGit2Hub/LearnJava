@@ -14,10 +14,10 @@ public class TransactionHandle implements InvocationHandle {
     }
 
     @Override
-    public void invoke(Object o, Method m) {
+    public void invoke(Object o, Method m, Object... args) {
         System.out.println("Open transaction......");
         try {
-            m.invoke(target);
+            m.invoke(target, args);
         } catch (Exception e) {
             e.printStackTrace();
         }

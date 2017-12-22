@@ -51,7 +51,7 @@ public class PokerQueue {
     public void deleteCurrent() {
         result[deletTimes++] = current.data;
         pre.next = current.next;
-        current = pre;
+        current = current.next;
         size--;
     }
 
@@ -95,7 +95,7 @@ public class PokerQueue {
     }
 
     public static void main(String []args){
-        int[] result = doAction(10000, 3);
+        int[] result = doAction(20, 3);
         for (int i = 0; i < result.length; i++) {
             System.out.print(result[i] + " ");
         }

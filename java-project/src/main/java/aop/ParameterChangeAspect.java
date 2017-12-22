@@ -11,7 +11,7 @@ import org.aspectj.lang.annotation.Aspect;
 public class ParameterChangeAspect {
     @Around(value = "@annotation(parameterChange)")
     public Object parameterChangePoint(ProceedingJoinPoint joinPoint, ParameterChange parameterChange) {
-
+        System.out.println("join point!");
         Object obj = null;
         return obj;
     }
