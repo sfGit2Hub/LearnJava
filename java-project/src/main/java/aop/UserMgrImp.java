@@ -7,6 +7,7 @@ import common.use.Person;
  */
 public class UserMgrImp implements UserMgr {
     @Override
+    @ParameterChange(parameterClass = UserMgrImp.class, parameterIndex = 1)
     public void addUser(Person person) {
         System.out.println("UserMgrImp-addUser()");
     }

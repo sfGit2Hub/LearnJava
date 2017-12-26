@@ -21,7 +21,11 @@ public class TimeHandle implements InvocationHandle {
     public void invoke(Object o, Method m, Object... args) {
         System.out.println("Execute method start time: " + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
         try {
-            m.invoke(target, args);
+            if (args.length > 0) {
+                m.invoke(target, args);
+            } else {
+                m.invoke(target);
+            }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

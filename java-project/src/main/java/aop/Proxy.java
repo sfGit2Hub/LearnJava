@@ -20,9 +20,10 @@ public class Proxy {
         Method[] methods = infce.getMethods();
         for (Method method : methods) {
             Class[] argsTypes = method.getParameterTypes();
-            String argsStr = "";
+            String argsStr = "", argsTypeStr = "";
             int argsIndex = 0;
             for (int i = 0; i < argsTypes.length; i++) {
+                argsTypeStr += ", " + argsTypes[i].getName() + ".class";
                 argsStr += argsTypes[i].getName() + " arg" + argsIndex++;
                 if (i != argsTypes.length - 1) {
                     argsStr += ", ";
@@ -36,7 +37,7 @@ public class Proxy {
             methodStr += "  @Override" + rn +
                          "  public " + method.getReturnType() + " " + method.getName() + "("+ argsStr +"){" + rn +
                          "      try{" + rn +
-                         "          Method md = " + infce.getName() + ".class.getMethod(\"" + method.getName() + "\");" + rn +
+                         "          Method md = " + infce.getName() + ".class.getMethod(\"" + method.getName() + "\""+ argsTypeStr + ");" + rn +
                          "          h.invoke(this, md"+ invokeArgs + ");" + rn +
                                     jsonPrintStr +
                          "      }catch(Exception e){e.printStackTrace();}" + rn +
