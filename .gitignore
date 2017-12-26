@@ -1,8 +1,5 @@
 /.idea
-/LearnJava.iml
-/LearnJava.ipr
-/LearnJava.iws
-/java-project/java-project.iml
-/spring-project/spring-project.iml
 java-project/target/
-/java-web/java-web.iml
+*.iml
+*.ipr
+*.iws
