@@ -2,6 +2,7 @@ package zookeeper;
 
 import org.apache.zookeeper.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,12 +13,12 @@ public class ZookeeperDemo {
     // 根节点
     public static final String ROOT = "/root-ktv";
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         // 创建一个与服务器的连接
         ZooKeeper zk = new ZooKeeper("localhost:2181", 30000, new Watcher() {
             // 监控所有被触发的事件
             public void process(WatchedEvent event) {
-                System.out.println("状态:" + event.getState()+":"+event.getType()+":"+event.getWrapper()+":"+event.getPath());
+                System.out.println("状态:" + event.getState()+ ":" + event.getType() + ":" + event.getWrapper() + ":" +event.getPath());
             }
         });
         // 创建一个总的目录ktv，并不控制权限，这里需要用持久化节点，不然下面的节点创建容易出错
