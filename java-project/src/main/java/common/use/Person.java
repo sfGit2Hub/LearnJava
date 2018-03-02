@@ -11,6 +11,26 @@ public class Person implements Serializable{
     private int age;
     private Sex sex;
     private boolean isMarried;
+    private Foot rightFoot;
+    private Foot leftFoot;
+
+    public Foot getRightFoot() {
+        return rightFoot;
+    }
+
+    public Person setRightFoot(Foot rightFoot) {
+        this.rightFoot = rightFoot;
+        return this;
+    }
+
+    public Foot getLeftFoot() {
+        return leftFoot;
+    }
+
+    public Person setLeftFoot(Foot leftFoot) {
+        this.leftFoot = leftFoot;
+        return this;
+    }
 
     public String getName() {
         return name;

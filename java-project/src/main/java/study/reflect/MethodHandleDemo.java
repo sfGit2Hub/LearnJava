@@ -3,6 +3,7 @@ package study.reflect;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
+import java.lang.reflect.Method;
 
 /**
  * Created by SF on 2017/12/19.
@@ -17,6 +18,10 @@ public class MethodHandleDemo {
     public static void main(String[] args) throws Throwable {
         Object object = System.currentTimeMillis() % 2 == 0 ? System.out : new TestClass();
         getPrintlnMethod(object).invokeWithArguments("hello");
+        Method method = object.getClass().getMethod("println", String.class);
+        if (method != null) {
+            System.out.println(method.getDeclaringClass().getName());
+        }
     }
 
     private static MethodHandle getPrintlnMethod(Object object) throws NoSuchMethodException, IllegalAccessException {

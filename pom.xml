@@ -13,6 +13,7 @@
         <module>spring-project</module>
         <module>java-project</module>
         <module>java-web</module>
+        <module>mybatis-learn</module>
     </modules>
     <build>
         <plugins>

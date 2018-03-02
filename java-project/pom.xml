@@ -9,6 +9,10 @@
         <artifactId>LearnJava</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <properties>
+        <amazon.s3.client.version>1.10.52</amazon.s3.client.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <groupId>LearnJava</groupId>
     <artifactId>java-project</artifactId>
@@ -20,6 +24,32 @@
 
     <build>
         <plugins>
+            <!--This plugin could build a jar project-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <!-- 生成MANIFEST.MF的设置 -->
+                        <manifest>
+                            <!-- 为依赖包添加路径, 这些路径会写在MANIFEST文件的Class-Path下 -->
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <!-- jar启动入口类-->
+                            <mainClass>study.swing.Test</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <!-- 在Class-Path下添加配置文件的路径 -->
+                            <Class-Path>conf/</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                    <includes>
+                        <!-- 打jar包时，只打包class文件 -->
+                        <include>**/*.class</include>
+                    </includes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -105,6 +135,11 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.12</version>
         </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.6</version>
+        </dependency>
 
 
         <!-- zookeeper dependency-->
@@ -139,6 +174,12 @@
             <groupId>com.itextpdf.tool</groupId>
             <artifactId>xmlworker</artifactId>
             <version>5.5.10</version>
+        </dependency>
+        <!-- Amazon S3 client -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>${amazon.s3.client.version}</version>
         </dependency>
 
     </dependencies>
