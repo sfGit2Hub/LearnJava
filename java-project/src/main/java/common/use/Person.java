@@ -1,6 +1,9 @@
 package common.use;
 
+import com.google.common.base.MoreObjects;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by SF on 2016/12/25.
@@ -11,8 +14,9 @@ public class Person implements Serializable{
     private int age;
     private Sex sex;
     private boolean isMarried;
-    private Foot rightFoot;
-    private Foot leftFoot;
+    private Foot rightFoot = new Foot();
+    private Foot leftFoot = new Foot();
+    private List<String> titles;
 
     public Foot getRightFoot() {
         return rightFoot;
@@ -77,9 +81,24 @@ public class Person implements Serializable{
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "name: " + this.name +"\tage: " + this.age + "\tID: " + this.ID + "\tsex: " + this.sex
-                + "\tmarried: " + isMarried;
+    public List<String> getTitles() {
+        return titles;
     }
+
+    public Person setTitles(List<String> titles) {
+        this.titles = titles;
+        return this;
+    }
+//    @Override
+//    public String toString() {
+//        return MoreObjects.toStringHelper(this)
+//                .add("name", name)
+//                .add("ID", ID)
+//                .add("age", age)
+//                .add("sex", sex)
+//                .add("isMarried", isMarried)
+//                .add("rightFoot", rightFoot)
+//                .add("leftFoot", leftFoot)
+//                .toString();
+//    }
 }
