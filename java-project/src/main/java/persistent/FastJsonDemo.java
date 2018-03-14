@@ -89,6 +89,11 @@ public class FastJsonDemo {
         kvMap.put("leftFoot.toes.3.name", "toe3");
 
         JSONObject root = createJSON("leftFoot.length", 1.0, new JSONObject());
+        root = createJSON("name", "abel", root);
+        root = createJSON("ID", "125648323853", root);
+        root = createJSON("age", "3", root);
+        root = createJSON("isMarried", "false", root);
+        root = createJSON("sex", "MALE", root);
         root = createJSON("leftFoot.thick", 2.0, root);
         root = createJSON("leftFoot.toes.1.name", "toe1", root);
         root = createJSON("leftFoot.toes.1.furs.1.num", "2000000000", root);
@@ -110,29 +115,30 @@ public class FastJsonDemo {
             if (i != paths.length-1) {
                 String pathNext = paths[i + 1];
                 if (isNumeric(pathNext) && !isNumeric(path)) {
-                    child = ((JSONObject) parent).getJSONArray(path);
+                    child = castToJO(parent).getJSONArray(path);
                     if (child == null) {
                         child = new JSONArray();
-                        ((JSONObject) parent).put(path, child);
-                    } else {
-
+                        castToJO(parent).put(path, child);
                     }
                 } else if (isNumeric(path)) {
-                    child = new JSONObject();
-                    ((JSONArray) parent).add(child);
+                    if (castToJA(parent).size() < Integer.valueOf(path)) {
+                        child = new JSONObject();
+                        castToJA(parent).add(child);
+                    }
+                    child = (JSONObject) castToJA(parent).get(Integer.valueOf(path)-1);
                 } else {
-                    child = ((JSONObject) parent).getJSONObject(path);
+                    child = castToJO(parent).getJSONObject(path);
                     if (child == null) {
                         child = new JSONObject();
-                        ((JSONObject) parent).put(path, child);
+                        castToJO(parent).put(path, child);
                     }
                 }
             } else {
                 if (isNumeric(path)) {
-                    ((JSONArray)parent).add(value);
+                    castToJA(parent).add(value);
                     continue;
                 }
-                ((JSONObject) parent).put(path, value);
+                castToJO(parent).put(path, value);
             }
             parent = child;
         }
@@ -142,5 +148,19 @@ public class FastJsonDemo {
     public static boolean isNumeric(String str){
         Pattern pattern = Pattern.compile("[0-9]*");
         return pattern.matcher(str).matches();
+    }
+
+    public static JSONObject castToJO(JSON json) {
+        if (json instanceof JSONObject) {
+            return (JSONObject) json;
+        }
+        throw new IllegalArgumentException("can't cast JSONArray to JSONObject!");
+    }
+
+    public static JSONArray castToJA(JSON json) {
+        if (json instanceof JSONArray) {
+            return (JSONArray) json;
+        }
+        throw new IllegalArgumentException("can't cast JSONObject to JSONArray!");
     }
 }

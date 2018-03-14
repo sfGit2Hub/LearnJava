@@ -27,10 +27,12 @@ public class Toe {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("name", name)
-                .toString();
+    public List<Fur> getFurs() {
+        return furs;
+    }
+
+    public Toe setFurs(List<Fur> furs) {
+        this.furs = furs;
+        return this;
     }
 }
