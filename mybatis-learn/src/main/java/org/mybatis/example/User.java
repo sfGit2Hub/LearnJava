@@ -130,6 +130,7 @@ public class User {
                 .add("state", state)
                 .add("phone", phone)
                 .add("married", married)
+                .add("orders", orders)
                 .toString();
     }
 }

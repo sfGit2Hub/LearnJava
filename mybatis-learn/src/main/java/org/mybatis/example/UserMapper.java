@@ -1,9 +1,8 @@
 package org.mybatis.example;
 
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * Created by SF on 2017/12/25.
@@ -20,9 +19,17 @@ public interface UserMapper {
             @Result(property = "city", column = "city"),
             @Result(property = "state", column = "state"),
             @Result(property = "phone", column = "phone"),
-            @Result(property = "married", column = "married"),
-            @Result(property = "orders", column = "id",
-                    many = @Many(select = ""))
+            @Result(property = "married", column = "married", javaType = Boolean.class),
+            @Result(property = "orders", column = "user_id",
+                    many = @Many(select = "org.mybatis.example.UserMapper.getOrderByUser"))
     })
     User selectById(long id);
+
+    @Select("select * from order where user_id = #{id}")
+    @Results({
+            @Result(column = "id", property = "id", javaType = Long.class, id = true),
+            @Result(column = "name", property = "name"),
+            @Result(column = "description", property = "description")
+    })
+    List<Order> getOrderByUser(@Param("id")Long id);
 }
