@@ -1,5 +1,6 @@
 package org.mybatis.example;
 
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -18,7 +19,10 @@ public interface UserMapper {
             @Result(property = "address", column = "address"),
             @Result(property = "city", column = "city"),
             @Result(property = "state", column = "state"),
-            @Result(property = "phone", column = "phone")
+            @Result(property = "phone", column = "phone"),
+            @Result(property = "married", column = "married"),
+            @Result(property = "orders", column = "id",
+                    many = @Many(select = ""))
     })
     User selectById(long id);
 }

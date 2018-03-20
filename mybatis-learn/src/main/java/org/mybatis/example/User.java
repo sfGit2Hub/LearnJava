@@ -1,5 +1,7 @@
 package org.mybatis.example;
 
+import java.util.List;
+
 /**
  * Created by SF on 2017/12/25.
  */
@@ -13,6 +15,26 @@ public class User {
     private String city;
     private String state;
     private String phone;
+    private Boolean married;
+    private List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public User setOrders(List<Order> orders) {
+        this.orders = orders;
+        return this;
+    }
+
+    public Boolean getMarried() {
+        return married;
+    }
+
+    public User setMarried(Boolean married) {
+        this.married = married;
+        return this;
+    }
 
     public long getId() {
         return id;
@@ -107,6 +129,7 @@ public class User {
                 .add("city", city)
                 .add("state", state)
                 .add("phone", phone)
+                .add("married", married)
                 .toString();
     }
 }
