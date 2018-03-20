@@ -3,6 +3,7 @@ package common.use;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +18,16 @@ public class Person implements Serializable{
     private Foot rightFoot = new Foot();
     private Foot leftFoot = new Foot();
     private List<String> titles;
+    private Date birthDay;
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public Person setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+        return this;
+    }
 
     public Foot getRightFoot() {
         return rightFoot;
@@ -24,6 +35,14 @@ public class Person implements Serializable{
 
     public Person setRightFoot(Foot rightFoot) {
         this.rightFoot = rightFoot;
+        return this;
+    }
+
+    public Person setRightFoot(String footParams) {
+        String[] params = footParams.split(",");
+        if (params.length >= 3) {
+            this.rightFoot = new Foot(params[0], params[1], params[2]);
+        }
         return this;
     }
 

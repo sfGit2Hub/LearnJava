@@ -4,8 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import common.use.Foot;
 import common.use.Person;
 import common.use.Sex;
@@ -13,7 +11,6 @@ import common.use.Toe;
 
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /**
  * Created by SF on 2018/3/2.
@@ -81,16 +78,18 @@ public class FastJsonDemo {
 
     private static void testMapToJSON() {
         Map<String, Object> kvMap = new HashMap<>();
-        kvMap.put("leftFoot.length", 1.0);
-        kvMap.put("leftFoot.weight", 2.0);
-        kvMap.put("leftFoot.thick", 3.0);
+        kvMap.put("leftFoot.length", "1.00");
+        kvMap.put("leftFoot.weight", "2.00");
+        kvMap.put("leftFoot.thick", "3.0");
         kvMap.put("leftFoot.toes.1.name", "toe1");
         kvMap.put("leftFoot.toes.2.name", "toe2");
         kvMap.put("leftFoot.toes.3.name", "toe3");
 
         JSONObject root = createJSON("leftFoot.length", 1.0, new JSONObject());
         root = createJSON("name", "abel", root);
-        root = createJSON("ID", "125648323853", root);
+        root = createJSON("birthDay", "2018-03-15", root);
+//        root = createJSON("rightFoot", "1.00,2.00,3.00", root);   //即使有对应String参数的set方法，JSON也无法正常转对象
+//        root = createJSON("ID", "125648323853", root);
         root = createJSON("age", "3", root);
         root = createJSON("isMarried", "false", root);
         root = createJSON("sex", "MALE", root);

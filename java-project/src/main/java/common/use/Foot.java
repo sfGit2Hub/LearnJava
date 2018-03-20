@@ -22,6 +22,12 @@ public class Foot {
         this.thick = thick;
     }
 
+    public Foot(String param, String param1, String param2) {
+        this.length = Double.valueOf(param);
+        this.weight = Double.valueOf(param1);
+        this.thick = Double.valueOf(param2);
+    }
+
     public double getLength() {
         return length;
     }
