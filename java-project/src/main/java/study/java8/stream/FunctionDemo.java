@@ -1,5 +1,6 @@
 package study.java8.stream;
 
+import com.alibaba.fastjson.JSON;
 import common.use.Person;
 import common.use.Sex;
 
@@ -21,6 +22,21 @@ public class FunctionDemo {
         return object -> seen.putIfAbsent(keyExtractor.apply(object), Boolean.TRUE) == null;
     }
 
+    public static List<Person> distinct(List<Person> persons) {
+        return persons.parallelStream()
+                .filter(distinctByKey(Person::getName))
+                .collect(Collectors.toList());
+    }
+
+    public static Map<Sex, List<Person>> groupBySex(List<Person> persons) {
+        return persons.stream().collect(Collectors.groupingBy(person -> {
+            if (person.getSex().equals(Sex.FEMALE))
+                return Sex.FEMALE;
+            else
+                return Sex.MALE;
+        }));
+    }
+
     public static void main(String[] args) {
         List<Person> persons = new ArrayList<>();
         persons.add(new Person("1", "id-1", Sex.MALE));
@@ -31,11 +47,7 @@ public class FunctionDemo {
         persons.add(new Person("2", "id-6", Sex.MALE));
         persons.add(new Person("3", "id-5", Sex.FEMALE));
 
-        List<Person> distinctPersons = persons.parallelStream()
-                .filter(distinctByKey(Person::getName))
-                .collect(Collectors.toList());
-
-        System.out.println(distinctPersons);
-
+        System.out.println(distinct(persons));
+        System.out.println(JSON.toJSONString(groupBySex(persons)));
     }
 }

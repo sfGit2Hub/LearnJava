@@ -1,5 +1,6 @@
 package common.use;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
@@ -119,16 +120,6 @@ public class Person implements Serializable{
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("name", name)
-                .add("ID", ID)
-                .add("age", age)
-                .add("sex", sex)
-                .add("isMarried", isMarried)
-                .add("rightFoot", rightFoot)
-                .add("leftFoot", leftFoot)
-                .add("titles", titles)
-                .add("birthDay", birthDay)
-                .toString();
+        return JSON.toJSONString(this);
     }
 }
