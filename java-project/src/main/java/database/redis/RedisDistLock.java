@@ -21,11 +21,11 @@ public class RedisDistLock {
     public synchronized boolean acquire() throws InterruptedException {
         //锁到期时间
         String expire = System.currentTimeMillis() + expireMses + 1 + "";
-        if (jedis.setnx(lockKey, expire) == 1) {
-            return true;
-        }
         long timeout = timeoutMses;
         while (timeout > 0) {
+            if (jedis.setnx(lockKey, expire) == 1) {
+                return true;
+            }
             //redis里的时间
             String value = jedis.get(lockKey);
             //判断是否为空，不为空的情况下，如果被其他线程设置了值，则第二个条件判断是过不去的
@@ -44,5 +44,9 @@ public class RedisDistLock {
             Thread.sleep(100);
         }
         return false;
+    }
+
+    public synchronized void release() {
+        jedis.del(lockKey);
     }
 }
