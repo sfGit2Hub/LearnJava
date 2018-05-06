@@ -25,7 +25,8 @@ public class Environment {
         this.dataSource = dataSource;
     }
 
-    public static class Builder{
+    public static class Builder {
+
         private String id;
         private TransactionFactory transactionFactory;
         private DataSource dataSource;
