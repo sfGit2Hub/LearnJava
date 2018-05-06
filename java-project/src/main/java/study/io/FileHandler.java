@@ -9,6 +9,7 @@ import java.io.IOException;
 public class FileHandler {
     public static void main(String[] args) throws IOException {
         File file = new File("D:\\Project\\workspace\\LearnJava\\..\\project.log");
+        System.out.println(file.getName());
 //        D:\Project\workspace\project.log
         System.out.println(file.getCanonicalPath());
     }

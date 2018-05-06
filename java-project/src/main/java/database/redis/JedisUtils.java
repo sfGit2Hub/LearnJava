@@ -36,6 +36,9 @@ public class JedisUtils {
         jedisPool = new JedisPool(config, JEDIS_IP, JEDIS_PORT, 60000);
     }
 
+    public static Jedis getClient() {
+        return jedisPool.getResource();
+    }
     /**
      * 获取数据
      * @param key

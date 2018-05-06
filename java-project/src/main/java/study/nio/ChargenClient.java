@@ -13,22 +13,20 @@ import java.nio.channels.WritableByteChannel;
  */
 public class ChargenClient {
     public static int DEFAULT_PORT = 19;
+    public static String DEFAULT_URL = "localhost";
     public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Usage: java ChargenClient host [port]");
-            return;
+        String url = DEFAULT_URL;
+        int port = DEFAULT_PORT;
+        if (args.length == 1) {
+            url = args[0];
         }
-
-        int port = 0;
-        try {
-            Integer.valueOf(args[1]);
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            port = DEFAULT_PORT;
+        if (args.length == 2) {
+            url = args[0];
+            port = Integer.valueOf(args[1]);
         }
 
         try {
-            SocketAddress address = new InetSocketAddress(args[0], port);
+            SocketAddress address = new InetSocketAddress(url, port);
             SocketChannel channel = SocketChannel.open(address);
 
             ByteBuffer buffer = ByteBuffer.allocate(74);

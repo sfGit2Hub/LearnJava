@@ -1,5 +1,6 @@
 package common.use;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
@@ -19,6 +20,14 @@ public class Person implements Serializable{
     private Foot leftFoot = new Foot();
     private List<String> titles;
     private Date birthDay;
+
+    public Person(){}
+
+    public Person(String name, String id, Sex sex) {
+        this.name = name;
+        this.ID = id;
+        this.sex = sex;
+    }
 
     public Date getBirthDay() {
         return birthDay;
@@ -108,16 +117,9 @@ public class Person implements Serializable{
         this.titles = titles;
         return this;
     }
-//    @Override
-//    public String toString() {
-//        return MoreObjects.toStringHelper(this)
-//                .add("name", name)
-//                .add("ID", ID)
-//                .add("age", age)
-//                .add("sex", sex)
-//                .add("isMarried", isMarried)
-//                .add("rightFoot", rightFoot)
-//                .add("leftFoot", leftFoot)
-//                .toString();
-//    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }
