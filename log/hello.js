@@ -3,7 +3,7 @@ var Sex = Java.type("common.use.Sex");
 
 /**
  * JavaBean Inject
- * user is a object from java code inject
+ * use SimpleBinds inject from java
  */
 print(user);
 
