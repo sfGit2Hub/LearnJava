@@ -16,14 +16,27 @@ public class 统计数字 {
      */
     public static int digitCounts(int k, int n) {
         int num = 0;
-        String kChar = k + "";
+        /*String kChar = k + "";
         for (int i = 0; i <= n; i++) {
             String nStr = i + "";
             while (nStr.contains(kChar)) {
                 num++;
                 nStr = nStr.substring(nStr.indexOf(kChar) + 1);
             }
+        }*/
+        for (int i = 0; i <= n; i++) {
+            int number = i;
+            while (number / 10 > 0) {
+                if (number % k == 0) {
+                    number++;
+                }
+                number = number / 10;
+            }
+            if (number == k) {
+                num++;
+            }
         }
+
         return num;
     }
 
