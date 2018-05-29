@@ -31,8 +31,7 @@ public class 二叉树序列化 {
     public static TreeNode deserialize(String data) {
         // write your code here
         String[] nodes = data.split(",");
-        TreeNode root = deserialize(nodes);
-        return root;
+        return deserialize(nodes);
     }
 
     public static TreeNode deserialize(String []data) {
