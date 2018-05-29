@@ -1,7 +1,7 @@
 package lintcode;
 
 public class 二叉树序列化 {
-
+    private static int index = -1;
     /**
      * This method will be invoked first, you should design your own algorithm
      * to serialize a binary tree which denote by a root node to a string which
@@ -28,9 +28,22 @@ public class 二叉树序列化 {
      * designed by yourself, and deserialize it here as you serialize it in
      * "serialize" method.
      */
-    public TreeNode deserialize(String data) {
+    public static TreeNode deserialize(String data) {
         // write your code here
-        return null;
+        String[] nodes = data.split(",");
+        TreeNode root = deserialize(nodes);
+        return root;
+    }
+
+    public static TreeNode deserialize(String []data) {
+        index++;
+        if (data[index].equals("#")) {
+            return null;
+        }
+        TreeNode leave = new TreeNode(Integer.valueOf(data[index]));
+        leave.left = deserialize(data);
+        leave.right = deserialize(data);
+        return leave;
     }
 
     public static void main(String[] args) {
@@ -41,6 +54,9 @@ public class 二叉树序列化 {
         root.right.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
         System.out.println(serialize(root));
+
+        TreeNode rootSource = deserialize("1,2,3,#,#,#,4,6,#,#,5,#,#,");
+        System.out.println(rootSource);
     }
 
 //      Definition of TreeNode:
