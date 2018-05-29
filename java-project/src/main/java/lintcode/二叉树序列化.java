@@ -7,22 +7,19 @@ public class 二叉树序列化 {
      * to serialize a binary tree which denote by a root node to a string which
      * can be easily deserialized by your own "deserialize" method later.
      */
-    public String serialize(TreeNode root) {
+    public static String serialize(TreeNode root) {
         // write your code here
-        String serial = "";
-        return serial;
-
-    }
-
-    public static String serialzeToString(TreeNode root) {
-        if (root == null) {
-            return "*";
+        StringBuilder s = new StringBuilder();
+        if(root == null){
+            s.append("#,");
+            return s.toString();
         }
-        String str = root.val + " ";
-        str = str + serialzeToString(root.left) + " ";
-        str = str + serialzeToString(root.right) + " ";
-        return str;
+        s.append(root.val+",");
+        s.append(serialize(root.left));
+        s.append(serialize(root.right));
+        return s.toString();
     }
+
 
     /**
      * This method will be invoked second, the argument data is what exactly
@@ -43,7 +40,7 @@ public class 二叉树序列化 {
         root.right = new TreeNode(4);
         root.right.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
-        System.out.println(serialzeToString(root));
+        System.out.println(serialize(root));
     }
 
 //      Definition of TreeNode:
