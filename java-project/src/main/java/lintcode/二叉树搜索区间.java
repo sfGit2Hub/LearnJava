@@ -14,7 +14,11 @@ public class 二叉树搜索区间 {
     public static List<Integer> searchRange(TreeNode root, int k1, int k2) {
         // write your code here
         List<Integer> results = new ArrayList<>();
-        compareAdd(root, k1, k2, results);
+        if (root == null) {
+            return results;
+        }
+//        compareAdd(root, k1, k2, results);
+        compareAdd2(root, k1, k2, results);
         Collections.sort(results);
         return results;
     }
@@ -28,6 +32,24 @@ public class 二叉树搜索区间 {
         }
         compareAdd(node.left, k1, k2, results);
         compareAdd(node.right, k1, k2, results);
+    }
+
+    private static void compareAdd2(TreeNode node, int k1, int k2, List<Integer> results) {
+       if (node.val < k1 && node.right != null) {
+           compareAdd2(node.right, k1, k2, results);
+       } else if (node.val > k2 && node.left != null) {
+           compareAdd2(node.left, k1, k2, results);
+       } else {
+           if (node.left != null) {
+               compareAdd2(node.left, k1, k2, results);
+           }
+           if (node.val >= k1 && node.val <= k2) {
+               results.add(node.val);
+           }
+           if (node.right != null) {
+               compareAdd2(node.right, k1, k2, results);
+           }
+       }
     }
 
     private static void addLesser(TreeNode node, List<Integer> results) {
