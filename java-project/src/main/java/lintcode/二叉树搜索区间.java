@@ -19,7 +19,7 @@ public class 二叉树搜索区间 {
         }
 //        compareAdd(root, k1, k2, results);
         compareAdd2(root, k1, k2, results);
-        Collections.sort(results);
+//        Collections.sort(results);
         return results;
     }
 
