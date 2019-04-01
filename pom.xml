@@ -14,6 +14,7 @@
         <module>java-project</module>
         <module>java-web</module>
         <module>mybatis-learn</module>
+        <module>hack-day</module>
     </modules>
     <build>
         <plugins>
