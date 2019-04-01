@@ -11,14 +11,29 @@ public class 两数之和 {
     private static ListNode addTwoNode(ListNode node_1, ListNode node_2, int up) {
         if (node_1 == null || node_2 == null) {
             if (node_1 != null) {
-                node_1.val += up;
-                return node_1;
+                int sum = node_1.val + up;
+                if (sum >= 10) {
+                    node_1.val = sum - 10;
+                    return addTwoNode(node_1.next, null, 1);
+                } else {
+                    node_1.val += up;
+                    return node_1;
+                }
             }
             if (node_2 != null) {
-                node_2.val += up;
-                return node_2;
+                int sum = node_2.val + up;
+                if (sum >= 10) {
+                    node_2.val = sum - 10;
+                    return addTwoNode(node_2.next, null, 1);
+                } else {
+                    node_2.val += up;
+                    return node_2;
+                }
             }
-            return null;
+            if (up == 0) {
+                return null;
+            }
+            return new ListNode(up);
         }
         int sum = node_1.val + node_2.val + up;
         ListNode node;
@@ -47,13 +62,13 @@ public class 两数之和 {
     }
 
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(2);
+        ListNode l1 = new ListNode(1);
         l1.next = new ListNode(4);
-        l1.next.next = new ListNode(3);
+//        l1.next.next = new ListNode(3);
 
-        ListNode l2 = new ListNode(5);
-        l2.next = new ListNode(6);
-        l2.next.next = new ListNode(4);
+        ListNode l2 = new ListNode(9);
+        l2.next = new ListNode(9);
+//        l2.next.next = new ListNode(4);
 
         ListNode result = addTwoNumbers(l1, l2);
         System.out.println(result);

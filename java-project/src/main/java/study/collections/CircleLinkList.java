@@ -1,17 +1,21 @@
 package study.collections;
 
+import java.util.Iterator;
+
 /**
  * Created by SF on 2017/12/20.
  */
-public class CircleLinkList<T> {
-    Node head, tail;
-    Node p;
+public class CircleLinkList<T> implements Iterable<T>{
+    Node<T> head, tail;
+    Node<T> p;
     int size = 0;
+    T[] result;
 
-    public CircleLinkList() {
+    public CircleLinkList(int size) {
         this.head = null;
         tail = head;
         p = head;
+        result = (T[]) new Object[size];
     }
 
     public int length() {
@@ -38,6 +42,7 @@ public class CircleLinkList<T> {
             size++;
         }
     }
+
 
     /**
      * 得到数据
@@ -68,12 +73,45 @@ public class CircleLinkList<T> {
             return true;
     }
 
+    public T[] getResult() {
+        return result;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new CircleLinkListIterator();
+    }
+
     private class Node<T> {
         Node next;
         T data;
 
         public Node(T data) {
             this.data = data;
+        }
+    }
+
+    private class CircleLinkListIterator implements Iterator<T> {
+        private Node<T> current = (Node<T>) p;
+        private int resultIndex = 0;
+
+        @Override
+        public boolean hasNext() {
+            return isEmpty();
+        }
+
+        @Override
+        public T next() {
+            return (T) p.next.data;
+        }
+
+        @Override
+        public void remove() {
+            if (p.next != null) {
+                p.next = p.next.next;
+                size--;
+                result[resultIndex++] = (T) p.next.data;
+            }
         }
     }
 }
