@@ -7,4 +7,5 @@ public interface Subject<T> {
     void registerObserver(T observe);
     void removeObserver(T observe);
     void notifyObservers();
+    void notifyObservers(String value);
 }

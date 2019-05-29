@@ -26,12 +26,24 @@ public class WeatherData implements Subject<Observe> {
     public void notifyObservers() {
         if (observes == null) return;
         for (Observe o : observes) {
-            o.update(value);
+            o.update(this);
+        }
+    }
+
+    @Override
+    public void notifyObservers(String value) {
+        if (observes == null) return;
+        for (Observe o : observes){
+            o.update();
         }
     }
 
     public void changeValue(String value){
         this.value = value;
         notifyObservers();
+    }
+
+    public String getValue() {
+        return value;
     }
 }
