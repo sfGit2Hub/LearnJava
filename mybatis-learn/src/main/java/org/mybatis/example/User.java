@@ -6,7 +6,7 @@ import java.util.List;
  * Created by SF on 2017/12/25.
  */
 public class User {
-    private long id;
+    private Long id;
     private String email;
     private String passport;
     private String firstName;
@@ -18,29 +18,11 @@ public class User {
     private Boolean married;
     private List<Order> orders;
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public User setOrders(List<Order> orders) {
-        this.orders = orders;
-        return this;
-    }
-
-    public Boolean getMarried() {
-        return married;
-    }
-
-    public User setMarried(Boolean married) {
-        this.married = married;
-        return this;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public User setId(long id) {
+    public User setId(Long id) {
         this.id = id;
         return this;
     }
@@ -114,6 +96,24 @@ public class User {
 
     public User setPhone(String phone) {
         this.phone = phone;
+        return this;
+    }
+
+    public Boolean getMarried() {
+        return married;
+    }
+
+    public User setMarried(Boolean married) {
+        this.married = married;
+        return this;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public User setOrders(List<Order> orders) {
+        this.orders = orders;
         return this;
     }
 

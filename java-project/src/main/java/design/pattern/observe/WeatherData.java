@@ -34,7 +34,7 @@ public class WeatherData implements Subject<Observe> {
     public void notifyObservers(String value) {
         if (observes == null) return;
         for (Observe o : observes){
-            o.update();
+            o.update(this, value);
         }
     }
 

@@ -17,5 +17,5 @@ public interface OrderMapper {
             @Result(column = "name", property = "name"),
             @Result(column = "description", property = "description")
     })
-    List<Order> getOrderByUser(@Param("id")Long id);
+    List<Order> getOrderByUser(@Param("user_id")Long id);
 }
